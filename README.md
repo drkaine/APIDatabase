@@ -1,2 +1,3 @@
 # APIDatabase
- API qui permet de gérer sa base de donnée avec des requêtes ou le back office
+ API qui permet de gérer sa base de donnée avec des requêtes ou le back office.
+ Projet fait entièrement en TDD.
