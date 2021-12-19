@@ -43,7 +43,7 @@ class DB
     
     public function create(STRING $table, STRING $columns)
     {
-        $this->sql = 'CREATE TABLE ' . $table . ' (' . $columns . ')';
+        $this->sql = 'CREATE TABLE `' . $table . '` (' . $columns . ')';
     }
 
     public function createDatabase(STRING $database)
@@ -61,9 +61,9 @@ class DB
         $this->sql = 'DROP DATABASE IF EXISTS ' . $database;
     }
 
-    public function delete(STRING $database)
+    public function delete(STRING $table)
     {
-        $this->sql = 'DELETE FROM ' . $database;
+        $this->sql = 'DELETE FROM ' . $table;
     }
 
     public function insert(STRING $table, STRING $columns, STRING $values)
@@ -73,7 +73,7 @@ class DB
 
     public function update(STRING $table, STRING $values)
     {
-        $this->sql = 'UPDATE ' . $table . ' SET ' . $values;
+        $this->sql = 'UPDATE `' . $table . '` SET ' . $values;
     }
 
     public function sendQuery()

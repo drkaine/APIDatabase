@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use models\DB;
 
 require("models/DB.php");
+// require("models/Autoloader.php");
 
 class DBTest extends TestCase
 {
