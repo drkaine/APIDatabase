@@ -79,6 +79,7 @@ class DB
     public function sendQuery()
     {
         if($this->conn->query($this->sql)) return true;
+        return false;
     }
     
 
