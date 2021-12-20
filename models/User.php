@@ -21,7 +21,7 @@ class User
         $this->password = $password;
         $this->token = $token;
         $this->date = new \DateTime();
-        $this->db = new DB('apidatabase');
+        $this->db = new DB( DATABASE_USER );
         $this->table = 'user';
     }
 
@@ -49,6 +49,12 @@ class User
     {
         $this->db->select($this->table);
         $this->where($condition);
+        return $this->executeQuery($type);
+    }
+
+    public function getUsers(STRING $type = "object")
+    {
+        $this->db->select($this->table);
         return $this->executeQuery($type);
     }
 
