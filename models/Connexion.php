@@ -43,18 +43,11 @@ class Connexion
         return $this->db->sendQuery();
     }
 
-    /**
-     * @return bool
-     */
     public function executeQuery(STRING $type)
     {
         return $this->db->executeQuery($type);
     }
 
-    /**
-     * @param array $condition
-     * @return void
-     */
     public function where(array $condition): void
     {
         $this->db->where($condition[0], $condition[1], $condition[2]);
