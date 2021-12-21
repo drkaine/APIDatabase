@@ -8,3 +8,4 @@ define("DB_MDP", "");
 define("DRIVER_DB", "mysql");
 
 define("DATABASE_USER", "apidatabasetest");
+define("TABLE_USER", "user");

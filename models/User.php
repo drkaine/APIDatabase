@@ -15,7 +15,7 @@ class User
     protected $table;
     protected $db;
 
-    public function __construct($login, $password, $token)
+    public function __construct($login = NULL, $password = NULL, $token = NULL)
     {
         $this->login = $login;
         $this->password = $password;
@@ -27,7 +27,7 @@ class User
 
     public function create()
     {
-        $this->db->insert($this->table, '(`login`, `password`, `created_at`, `updated_at`, `token`)', '("' . $this->login . '", "' . $this->password . '", "' . $this->date->format('Y-m-d H:i:s.u') . '", "' . $this->date->format('Y-m-d H:i:s.u') . '", "' . $this->token . '")');
+        $this->db->insert($this->table, '(`login`, `password`, `created_at`, `updated_at`, `token`)', '("' . $this->login . '", "' . $this->crypt($this->password) . '", "' . $this->date->format('Y-m-d H:i:s.u') . '", "' . $this->date->format('Y-m-d H:i:s.u') . '", "' . $this->token . '")');
         return $this->sendQuery();
     }
 
@@ -43,19 +43,6 @@ class User
         $this->db->delete($this->table);
         $this->where($condition);
         return $this->sendQuery();
-    }
-
-    public function getUser(ARRAY $condition, STRING $type = "object")
-    {
-        $this->db->select($this->table);
-        $this->where($condition);
-        return $this->executeQuery($type);
-    }
-
-    public function getUsers(STRING $type = "object")
-    {
-        $this->db->select($this->table);
-        return $this->executeQuery($type);
     }
 
     public function sendQuery()
@@ -78,5 +65,10 @@ class User
     public function where(array $condition): void
     {
         $this->db->where($condition[0], $condition[1], $condition[2]);
+    }
+
+    public function crypt($password)
+    {
+        return password_hash($password, PASSWORD_BCRYPT);
     }
 }
