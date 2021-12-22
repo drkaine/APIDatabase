@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Test;
+session_start();
 
 use PHPUnit\Framework\TestCase;
 use models\Connexion;
@@ -34,4 +34,15 @@ class ConnexionTest extends TestCase
     {
         $this->assertEquals([0 => ["id" => "1", "login" => "duretkevin@live.fr", 0 => '1', 1 => 'duretkevin@live.fr', 2 => '$2y$10$JBGtY2LaJInCl7Fq.UaOJ./G6kJBmrFzxdwGNiINgaFVeH.m5cQOe', 'created_at' => '2021-12-18 22:05:05', 3 => '2021-12-18 22:05:05', 'updated_at' => '2021-12-18 22:05:05', 4 => '2021-12-18 22:05:05', 'token' => 'first', 5 => 'first', 'password' => '$2y$10$JBGtY2LaJInCl7Fq.UaOJ./G6kJBmrFzxdwGNiINgaFVeH.m5cQOe']], $this->connexion->getUser([0 => "login", 1 => "=", "\"duretkevin@live.fr\""], "array"));
     }
+
+    public function testLogout(): void
+    {
+        $_POST = ["logout" => "test"];
+        $this->assertEquals(true, $this->connexion->logout());
+    }
+
+    // public function testGetNewPassword(): void
+    // {
+    //     $this->
+    // }
 }

@@ -26,6 +26,17 @@ class Connexion
         $user = $this->getUser([0 => "login", 1 => "=", '"' . $this->login . "\""]);
         return password_verify($this->password, $user[0]->password) ? true : false;
     }
+
+    public function logout() 
+    {
+        if(isset($_POST["logout"]))
+        {
+            unset($_SESSION);
+            session_destroy();
+            return true;
+        }
+    }
+
     public function crypt($password)
     {
         return password_hash($password, PASSWORD_BCRYPT);
