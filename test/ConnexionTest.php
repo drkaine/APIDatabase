@@ -12,7 +12,7 @@ require("models/Connexion.php");
 
 class ConnexionTest extends TestCase
 {
-    protected $connxion;
+    protected $connexion;
 
     public function setUp() :void
     {
@@ -41,8 +41,11 @@ class ConnexionTest extends TestCase
         $this->assertEquals(true, $this->connexion->logout());
     }
 
-    // public function testGetNewPassword(): void
-    // {
-    //     $this->
-    // }
+    public function testUpdatePassword(): void
+    {
+        $_POST = ["login" => "duretkevin2@live.fr", "new_password" => "321"];
+        $this->assertEquals(true, $this->connexion->updatePassword());
+        $_POST = ["login" => "duretkevin2@live.fr",  "new_password" => "123"];
+        $this->assertEquals(true, $this->connexion->updatePassword());
+    }
 }

@@ -15,7 +15,7 @@ class DB
     protected $driverdb = DRIVER_DB;
 
     protected $conn;
-    protected $sql;
+    public $sql;
 
     public function __construct($database)
     {

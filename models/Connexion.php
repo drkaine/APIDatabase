@@ -37,6 +37,14 @@ class Connexion
         }
     }
 
+    public function updatePassword()
+    {
+        $this->db->update("user", "`password` = \"" . $this->crypt($_POST["new_password"]) . "\"");
+        $this->db->where("`login`", "=", "\"" . $_POST["login"] . "\"");
+        // return $this->db->sql;
+        return $this->db->sendQuery();
+    }
+
     public function crypt($password)
     {
         return password_hash($password, PASSWORD_BCRYPT);
